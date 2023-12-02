@@ -1,7 +1,7 @@
 import yaml
 from yacs import config as cfg_
 
-from src.agents import agent as agent_
+from src.agent import agent as agent_
 from src.utils import types
 
 

@@ -1,4 +1,4 @@
-from src.agents import agent as agent_
+from src.agent import agent as agent_
 from src.world import world as world_
 
 

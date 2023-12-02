@@ -2,7 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src.agents import agent as agent_
+from src.agent import agent as agent_
 from src.utils import types
 from src.world import world as world_
 

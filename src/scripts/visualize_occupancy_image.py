@@ -2,7 +2,7 @@ import time
 
 import matplotlib.pyplot as plt
 
-from src.agents import agent_factory
+from src.agent import agent_factory
 from src.simulator import simulator as sim_
 from src.utils import config as cfg_
 from src.visualizer import visualizer
