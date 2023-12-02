@@ -18,6 +18,7 @@ explicit_package_bases = true
 
 [[tool.mypy.overrides]]
 module = [
+  "yacs",
 ]
 ignore_missing_imports = true
 
