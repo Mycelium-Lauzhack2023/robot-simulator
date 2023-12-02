@@ -2,6 +2,7 @@ import yaml
 from yacs import config as cfg_
 
 from src.agent import agent as agent_
+from src.agent import controller as controller_
 from src.utils import types
 
 
@@ -15,12 +16,14 @@ def create_agents(agents_cfg: cfg_.CfgNode) -> list[agent_.Agent]:
 
   for agent_cfg in agents_cfg_["AGENTS"]:
     agent_type = _str_to_agent_type(agent_cfg["TYPE"])
-    agent = agent_.Agent(
-        name=agent_cfg["NAME"],
-        agent_type=agent_type,
-        starting_pose=agent_cfg["STARTING_POSE"],
-        starting_velocity=agent_cfg["STARTING_VELOCITY"],
-    )
+    agent_cfg_node = cfg_.CfgNode(agent_cfg)
+    if agent_type == types.AgentType.HOLONOMIC:
+      controller = controller_.Controller(agent_cfg_node)
+      agent = agent_.Agent(agent_cfg_node, controller)
+    elif agent_type == types.AgentType.DUBINS:
+      raise NotImplementedError("Dubins agent not implemented")
+    else:
+      raise ValueError(f"Unknown agent type: {agent_type}")
     agents.append(agent)
 
   return agents
