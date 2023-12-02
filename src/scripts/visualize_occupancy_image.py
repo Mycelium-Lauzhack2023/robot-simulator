@@ -19,12 +19,12 @@ def main() -> None:
 
   vis.show()
 
-  for _ in range(100):
+  while True:
     simulator.step()
     vis.update()
 
     plt.pause(0.01)  # Pause for 0.01 seconds
-    time.sleep(0.1)
+    time.sleep(0.05)
 
 
 if __name__ == '__main__':

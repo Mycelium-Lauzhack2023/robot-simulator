@@ -3,6 +3,7 @@ from yacs import config as cfg_
 
 from src.agent import agent as agent_
 from src.agent import controller as controller_
+from src.agent import planner as planner_
 from src.utils import types
 
 
@@ -18,8 +19,9 @@ def create_agents(agents_cfg: cfg_.CfgNode) -> list[agent_.Agent]:
     agent_type = _str_to_agent_type(agent_cfg["TYPE"])
     agent_cfg_node = cfg_.CfgNode(agent_cfg)
     if agent_type == types.AgentType.HOLONOMIC:
-      controller = controller_.Controller(agent_cfg_node)
-      agent = agent_.Agent(agent_cfg_node, controller)
+      planner = planner_.Planner(agents_cfg.PLANNER)
+      controller = controller_.Controller(agents_cfg.CONTROLLER)
+      agent = agent_.Agent(agent_cfg_node, controller, planner)
     elif agent_type == types.AgentType.DUBINS:
       raise NotImplementedError("Dubins agent not implemented")
     else:
