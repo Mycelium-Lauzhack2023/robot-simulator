@@ -1,4 +1,5 @@
 from src.utils import types
+from src.world import world as world_
 
 
 class Agent:
@@ -24,8 +25,10 @@ class Agent:
   def set_forward_velocity(self) -> None:
     pass
 
-  def update(self) -> None:
-    self._pose = [x + dx for x, dx in zip(self._pose, self._velocity)]
+  def update(self, world: world_.World) -> None:
+    new_pose = [x + dx for x, dx in zip(self._pose, self._velocity)]
+    if not world.is_pose_occupied(new_pose):
+      self._pose = new_pose
 
   @property
   def x(self) -> float:

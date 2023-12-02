@@ -20,5 +20,8 @@ class World:  # pylint: disable=too-few-public-methods
   def occupancy_grid(self) -> types.OccupancyGrid:
     return self._occupancy_grid
 
+  def is_pose_occupied(self, pose: types.Pose) -> bool:
+    return self.is_pixel_occupied(int(pose[0]), int(pose[1]))
+
   def _load_scenario(self) -> None:
     self._occupancy_grid = np.load(self._occupancy_grid_file).astype(np.uint8)
