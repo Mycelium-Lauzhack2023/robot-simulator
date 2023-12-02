@@ -29,8 +29,8 @@ def main() -> None:
     x = [pose[0] for pose in plan]
     y = [pose[1] for pose in plan]
     plt.plot(x, y, 'b-')
-    plt.scatter(agent.pose[1], agent.pose[0], c='g', marker='o')
-    plt.scatter(agent.global_goal_pose[1], agent.global_goal_pose[0], c='r', marker='o')
+    plt.scatter(agent.pose[0], agent.pose[1], c='g', marker='o')
+    plt.scatter(agent.global_goal_pose[0], agent.global_goal_pose[1], c='r', marker='o')
 
   plt.axis('off')
   plt.show()

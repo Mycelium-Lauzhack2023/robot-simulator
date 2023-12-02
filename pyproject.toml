@@ -21,6 +21,7 @@ module = [
   "yacs",
   "networkx",
   "rrtplanner",
+  "scipy",
 ]
 ignore_missing_imports = true
 

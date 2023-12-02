@@ -13,7 +13,7 @@ def get_default_configs() -> cfg.CfgNode:
   default_configs.AGENT.AGENTS_CONFIG_FILE = "configs/default_agents_cfg.yaml"
 
   default_configs.AGENT.CONTROLLER = cfg.CfgNode()
-  default_configs.AGENT.CONTROLLER.MAX_SPEED = 5.0
+  default_configs.AGENT.CONTROLLER.MAX_SPEED = 2.0
   default_configs.AGENT.CONTROLLER.MAX_YAW_RATE = 1.0
   default_configs.AGENT.CONTROLLER.GOAL_REACHED_THRESHOLD = 5.0
 

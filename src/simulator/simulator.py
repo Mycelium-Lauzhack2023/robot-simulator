@@ -15,3 +15,5 @@ class Simulator:  # pylint: disable=too-few-public-methods
   def step(self) -> None:
     for agent in self._agents:
       agent.update(self._world)
+      print(agent.pose)
+      print(agent.global_goal_pose)

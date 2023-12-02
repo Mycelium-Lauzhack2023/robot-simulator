@@ -1,6 +1,7 @@
 import jaxtyping
 import networkx as nx
 import numpy as np
+import scipy
 from rrtplanner import rrt
 from yacs import config as cfg_
 
@@ -32,6 +33,8 @@ class Planner:  # pylint: disable=too-many-instance-attributes
     self._global_goal_pose = global_goal_pose
 
   def set_occupancy_grid(self, occupancy_grid: types.OccupancyGrid) -> None:
+    for _ in range(10):
+      occupancy_grid = scipy.ndimage.binary_dilation(occupancy_grid)
     self._occupancy_grid = occupancy_grid
     self._rrt.set_og(self._occupancy_grid)
 
@@ -50,7 +53,9 @@ class Planner:  # pylint: disable=too-many-instance-attributes
       raise RuntimeError("Planner pose and goal pose must be initialized")
 
   def _get_start_and_goal(self) -> tuple[Position, Position]:
-    return np.array(self._pose[:2]).astype(np.uint32), np.array(self._global_goal_pose[:2]).astype(np.uint32)
+    start = np.array([self._pose[1], self._pose[0]]).astype(np.uint32)
+    goal = np.array([self._global_goal_pose[1], self._global_goal_pose[0]]).astype(np.uint32)
+    return start, goal
 
   @property
   def path(self) -> nx.Graph:
