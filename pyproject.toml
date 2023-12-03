@@ -19,6 +19,9 @@ explicit_package_bases = true
 [[tool.mypy.overrides]]
 module = [
   "yacs",
+  "networkx",
+  "rrtplanner",
+  "scipy",
 ]
 ignore_missing_imports = true
 
