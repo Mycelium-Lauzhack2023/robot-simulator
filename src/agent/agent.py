@@ -69,6 +69,10 @@ class Agent:  # pylint: disable=too-many-instance-attributes
     return all(abs(self._pose[i] - self._global_goal_pose[i] < 5) for i in range(2))
 
   @property
+  def name(self) -> str:
+    return self._name
+
+  @property
   def x(self) -> float:
     return self._pose[0]
 
