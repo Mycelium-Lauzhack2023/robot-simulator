@@ -1,7 +1,6 @@
 from yacs import config as cfg_
 
 from src.utils import types
-from src.world import world as world_
 
 
 class Controller:
@@ -20,7 +19,7 @@ class Controller:
   def set_goal_pose(self, goal_pose: types.Pose) -> None:
     self._goal_pose = goal_pose
 
-  def calc_velocity(self, world: world_.World) -> types.Velocity:
+  def calc_velocity(self) -> types.Velocity:
     self._assert_is_initialized()
     velocity: list[float] = [0, 0, 0]
     for i in range(2):
@@ -31,11 +30,6 @@ class Controller:
       velocity[i] *= dx_sign
     d_theta = self._goal_pose[2] - self._pose[2]
     velocity[2] = self._max_yaw_rate if d_theta > 0 else -self._max_yaw_rate
-    for i in range(2):
-      new_pose = self._pose
-      new_pose[i] = self._pose[i] + velocity[i]
-      if world.is_pose_occupied(new_pose):
-        velocity[i] = 0
     return velocity
 
   def is_goal_reached(self) -> bool:

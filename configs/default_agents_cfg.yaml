@@ -1,11 +1,11 @@
 AGENTS:
-  # - NAME: agent_1
-  #   TYPE: HOLONOMIC
-  #   STARTING_POSE: [100, 100, 0]
-  #   GOAL_POSE: [700, 400, 0]
-  #   STARTING_VELOCITY: [0, 0, 0]
+  - NAME: agent_1
+    TYPE: HOLONOMIC
+    STARTING_POSE: [100, 100, 0]
+    GOAL_POSE: [400, 700, 0]
+    STARTING_VELOCITY: [0, 0, 0]
   - NAME: agent_2
     TYPE: HOLONOMIC
     STARTING_POSE: [650, 850, 3.14]
-    GOAL_POSE: [100, 100, 0]
+    GOAL_POSE: [100, 250, 0]
     STARTING_VELOCITY: [0, 0, 0]
