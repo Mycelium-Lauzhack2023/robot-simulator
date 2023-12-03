@@ -18,7 +18,7 @@ def get_default_configs() -> cfg.CfgNode:
   default_configs.AGENT.CONTROLLER.GOAL_REACHED_THRESHOLD = 5.0
 
   default_configs.AGENT.PLANNER = cfg.CfgNode()
-  default_configs.AGENT.PLANNER.NUM_SAMPLES = 5000
+  default_configs.AGENT.PLANNER.NUM_SAMPLES = 7000
   default_configs.AGENT.PLANNER.REWIRE_RADIUS = 25.0
   default_configs.AGENT.PLANNER.OCCUPANCY_GRID_WIDTH = 1000
   default_configs.AGENT.PLANNER.OCCUPANCY_GRID_HEIGHT = 1000

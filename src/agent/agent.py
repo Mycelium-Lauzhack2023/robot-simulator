@@ -66,7 +66,7 @@ class Agent:  # pylint: disable=too-many-instance-attributes
       self._local_goal_poses.pop(0)
 
   def _is_goal_reached(self) -> bool:
-    return all(abs(self._pose[i] - self._global_goal_pose[i] < 5) for i in range(2))
+    return all(abs(self._pose[i] - self._global_goal_pose[i]) < 5 for i in range(2))
 
   @property
   def name(self) -> str:
